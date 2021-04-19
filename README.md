@@ -3,7 +3,7 @@
 - sass-loader v10.1.1
 - npm 6.14.5
 ## CSS rule
-- Өнгийг hex бичиглэлээр бүтэн бичнэ.
+- Өнгийг rgba() ашиглаагүй л бол ямагт hex бичиглэлээр *бүтэн* бичнэ.
   ```css
   /* bad */
   color: #000;
@@ -11,12 +11,83 @@
   /* good */
   color: #000000;
   ```
-- rg1ba() ашиглах бол өнгийг rgb бичиглэл эсвэл хувьсагчаар авч болно.
+- rgba() ашиглах бол өнгийг rgb бичиглэл эсвэл хувьсагчаар авч болно.
+  ```css
+  /* bad */
+  color: rgba(#000, 0.4);
+  
+  /* good */
+  color: rgba(0, 0, 0, 0.4);
+  color: rgba($var, 0.4);
+  ```
 - Spacing unit-дээ `px, %, vw, vh` ашиглана. 0 гэж тооцохдоо unit авалгүй дангаар нь бичнэ.
-- Font-size болон line-height-г `rem`-ээр тооцно. letter-spacing `px`-ээр тооцно.
+  ```css
+  /* bad */
+  margin: 2rem 0px;
+  
+  /* good */
+  margin: 10px 0;
+  ```
+- Font-size болон line-height-г `rem`-ээр, letter-spacing `px`-ээр тооцно.
+  ```css
+  /* bad */
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: 0.5em;
+  
+  /* good */
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 0.5px;
+  ```
 - Дараах нөхцлүүдэд шинэ мөр шилжүүлж бичнэ. 
   - Selector, pseudo class хооронд
+  ```css
+  /* bad */
+    .selector {
+      color: #000000;
+        .title {
+         color: #000000;
+           &::after {
+           ...
+           }
+        }
+    }
+  /* good */
+    .selector {
+      color: #000000;
+      
+      .title {
+       color: #000000;
+        
+         &::after {
+         ...
+         }
+      }
+    }
+  ```
   - mixin ашиглах үед. Хэрэв mixin нь `{` хаалтны дараа байвал шинэ мөр авах шаардлагагүй.
+  ```css
+  /* bad */
+    .selector {
+      @include mq('sm') {
+        color: #000000;
+      }
+      @include mq('md') {
+        color: #0000ff;
+      }
+    }
+  /* good */
+    .selector {
+      @include mq('sm') {
+        color: #000000;
+      }
+      
+      @include mq('md') {
+        color: #0000ff;
+      }
+    }
+  ```
 ## Git rule
 - Тухайн task-ын хүрээндэх branch дотроо л өөрчлөлтийг хийнэ
 - 1 task 1 commit дүрэм-г баримтлана
