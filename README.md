@@ -62,6 +62,7 @@
            }
         }
     }
+    
   /* good */
     .selector {
       color: #000000;
@@ -86,6 +87,7 @@
         color: #0000ff;
       }
     }
+    
   /* good */
     .selector {
       @include mq('sm') {
