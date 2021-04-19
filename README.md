@@ -1,9 +1,9 @@
 # airtamer-mn
 ## Requirements
 - sass-loader v10.1.1
-- npm 6.14.5
+- npm v6.14.5
 ## CSS rule
-- Өнгийг rgba() ашиглаагүй л бол ямагт hex бичиглэлээр *бүтэн* бичнэ.
+- Өнгийг `rgba()` ашиглаагүй л бол ямагт **hex** бичиглэлээр **бүтэн** бичнэ.
   ```css
   /* bad */
   color: #000;
@@ -11,7 +11,7 @@
   /* good */
   color: #000000;
   ```
-- rgba() ашиглах бол өнгийг rgb бичиглэл эсвэл хувьсагчаар авч болно.
+- `rgba()` ашиглах бол өнгийг **rgb** бичиглэл эсвэл **хувьсагч**-аар авч болно.
   ```css
   /* bad */
   color: rgba(#000, 0.4);
@@ -28,7 +28,7 @@
   /* good */
   margin: 10px 0;
   ```
-- Font-size болон line-height-г `rem`-ээр, letter-spacing `px`-ээр тооцно.
+- `font-size` болон `line-height`-г `rem`-ээр, letter-spacing `px`-ээр тооцно.
   ```css
   /* bad */
   font-size: 10px;
@@ -39,6 +39,14 @@
   font-size: 1rem;
   line-height: 1rem;
   letter-spacing: 0.5px;
+  ```
+ - `font-weight` тоогоот тооцно.
+  ```css
+  /* bad */
+  font-weight: bold;
+  
+  /* good */
+  font-weight: 700;
   ```
 - Дараах нөхцлүүдэд шинэ мөр шилжүүлж бичнэ. 
   - Selector, pseudo class хооронд
